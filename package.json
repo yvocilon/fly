@@ -8,7 +8,8 @@
 		"start": "react-router-serve ./build/server/index.js",
 		"typecheck": "react-router typegen && tsc",
 		"lint": "biome check --write",
-		"format": "biome format --write"
+		"format": "biome format --write",
+		"postinstall": "lefthook install"
 	},
 	"dependencies": {
 		"@react-router/node": "^7.5.2",
