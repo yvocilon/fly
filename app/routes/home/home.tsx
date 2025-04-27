@@ -16,7 +16,7 @@ const sortOptions: SortOption[] = [
 ];
 
 const schema = z.object({
-	search: z.string().optional(),
+	search: z.string().trim().optional(),
 	order: z
 		.string()
 		.pipe(z.enum(["asc", "desc"]).optional())
@@ -35,7 +35,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 
 	const params = schema.parse(Object.fromEntries(url.searchParams));
 
-	const search = params.search?.trim();
+	const search = params.search;
 
 	const order = params.order || "asc";
 

@@ -18,6 +18,7 @@ describe("FlightCard", () => {
 			screen.getByText(mockFlightsData.flights?.[0].airport),
 		).toBeInTheDocument();
 	});
+
 	test("shows new time when expectedTime is different from originalTime", () => {
 		render(<FlightCard {...flightsWithDateTime?.[0]} />);
 
