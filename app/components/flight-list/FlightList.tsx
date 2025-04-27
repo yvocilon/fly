@@ -11,7 +11,7 @@ type Props = {
 
 export default function FlightList({ isLoading, flights, search }: Props) {
 	if (isLoading) {
-		return <SkeletonLoader />;
+		return <SkeletonLoader search={search} />;
 	}
 
 	if ((search?.length || 0) < 3) {
