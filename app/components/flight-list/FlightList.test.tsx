@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
+import mockFlightsData from "~/__mock__/flights.json";
 import FlightList from "./FlightList";
 
 describe("FlightList", () => {
@@ -28,13 +29,11 @@ describe("FlightList", () => {
 	});
 
 	test("show flight cards when flights are found", async () => {
-		const mockData = require("../../__mock__/flights.json");
-
 		render(
 			<FlightList
 				isLoading={false}
 				search="london"
-				flights={mockData.flights?.slice(0, 5)}
+				flights={mockFlightsData.flights?.slice(0, 5)}
 			/>,
 		);
 
