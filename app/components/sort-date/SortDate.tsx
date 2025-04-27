@@ -14,7 +14,7 @@ export default function SortDate({ initialOrder }: Props) {
 				htmlFor="sort-order"
 				className="text-sm font-medium px-4 py-2 bg-gray-50 border border-gray-300 rounded-l-md text-gray-700 border-r-0 flex items-center h-10"
 			>
-				Sort by
+				Order by
 			</label>
 			<select
 				id="sort-order"
