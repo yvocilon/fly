@@ -11,16 +11,15 @@ export default function SortDate({ initialOrder }: Props) {
 	return (
 		<div className="w-full md:w-auto flex items-center">
 			<label
-				htmlFor="sort-order"
+				htmlFor="order"
 				className="text-sm font-medium px-4 py-2 bg-gray-50 border border-gray-300 rounded-l-md text-gray-700 border-r-0 flex items-center h-10"
 			>
 				Order by
 			</label>
 			<select
-				id="sort-order"
-				name="sortOrder"
+				name="order"
 				value={sortOrder}
-				onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
+				onChange={(e) => setSortOrder(e.target.value as SortOrder)}
 				className="px-4 py-2 text-sm font-medium border border-gray-300 rounded-r-md bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-schiphol-blue h-10 appearance-none flex items-center"
 				aria-label="Sort by departure date"
 			>
