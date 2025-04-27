@@ -28,7 +28,8 @@ export async function loader({ request }: Route.LoaderArgs) {
 
 	const params = schema.parse(Object.fromEntries(url.searchParams));
 
-	const search = params.search;
+	const search = params.search?.trim();
+
 	const order = params.order || "asc";
 
 	if ((search?.length || 0) < 3) {

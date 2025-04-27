@@ -38,9 +38,7 @@ export async function getFlights({ order, limit, search }: GetFlightsProps) {
 		const parsedData = flightsSchema.parse(data);
 
 		const filteredFlights = parsedData.flights.filter((flight) =>
-			flight.airport
-				.toLowerCase()
-				.includes(search?.toLowerCase()?.trim() || ""),
+			flight.airport.toLowerCase().includes(search?.toLowerCase() || ""),
 		);
 
 		const sortedFlights = sortFlights(filteredFlights, order);
