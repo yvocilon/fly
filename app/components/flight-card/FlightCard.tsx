@@ -12,7 +12,10 @@ export default function FlightCard({
 	score,
 }: Flight) {
 	return (
-		<div className="border overflow-hidden border-schiphol-blue rounded-md p-4 flex flex-row items-stretch gap-6 bg-white shadow-sm h-[96px]">
+		<div
+			data-testid="flight-card"
+			className="border overflow-hidden border-schiphol-blue rounded-md p-4 flex flex-row items-stretch gap-6 bg-white shadow-sm h-[96px]"
+		>
 			<FlightDate
 				date={date}
 				expectedTime={expectedTime}
