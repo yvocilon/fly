@@ -10,43 +10,24 @@ export default function SortDate({ initialOrder }: Props) {
 	);
 
 	return (
-		<fieldset className="w-full md:w-auto flex items-center border border-gray-300 rounded-md overflow-hidden">
-			<legend className="sr-only">Sort by departure date</legend>
-			<div className="flex items-center">
-				<span className="text-xs text-gray-500 px-2 py-1 bg-gray-50 border-r border-gray-300">
-					Sort by:
-				</span>
-				<div className="flex">
-					<button
-						type="submit"
-						name="order"
-						value="asc"
-						onClick={() => setSortOrder("asc")}
-						className={`px-3 py-2 text-sm font-medium ${
-							sortOrder === "asc"
-								? "bg-schiphol-blue text-white"
-								: "bg-white text-gray-700 hover:bg-gray-50"
-						}`}
-						aria-label="Sort by departure date ascending"
-					>
-						Departure date ↑
-					</button>
-					<button
-						type="submit"
-						name="order"
-						value="desc"
-						onClick={() => setSortOrder("desc")}
-						className={`px-3 py-2 text-sm font-medium ${
-							sortOrder === "desc"
-								? "bg-schiphol-blue text-white"
-								: "bg-white text-gray-700 hover:bg-gray-50"
-						}`}
-						aria-label="Sort by departure date descending"
-					>
-						Departure date ↓
-					</button>
-				</div>
-			</div>
-		</fieldset>
+		<div className="w-full md:w-auto flex items-center">
+			<label
+				htmlFor="sort-order"
+				className="text-sm font-medium px-4 py-2 bg-gray-50 border border-gray-300 rounded-l-md text-gray-700 border-r-0 flex items-center h-10"
+			>
+				Sort by
+			</label>
+			<select
+				id="sort-order"
+				name="sortOrder"
+				value={sortOrder}
+				onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
+				className="px-4 py-2 text-sm font-medium border border-gray-300 rounded-r-md bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-schiphol-blue h-10 appearance-none flex items-center"
+				aria-label="Sort by departure date"
+			>
+				<option value="asc">Departure date ↑</option>
+				<option value="desc">Departure date ↓</option>
+			</select>
+		</div>
 	);
 }

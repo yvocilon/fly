@@ -1,33 +1,31 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import SortDate from "./SortDate";
 
 describe("SortDate", () => {
-	test("renders", () => {
+	test("renders select and options", () => {
 		render(<SortDate />);
-
-		expect(screen.getByText("Departure date ↑")).toBeInTheDocument();
-
-		expect(screen.getByText("Departure date ↓")).toBeInTheDocument();
+		const select = screen.getByRole("combobox", {
+			name: /sort by departure date/i,
+		});
+		expect(select).toBeInTheDocument();
 	});
+
 	test("renders with initial order", () => {
 		render(<SortDate initialOrder="desc" />);
-
-		expect(screen.getByText("Departure date ↓")).toHaveClass(
-			"bg-schiphol-blue",
-		);
+		const select = screen.getByRole("combobox", {
+			name: /sort by departure date/i,
+		});
+		expect(select).toHaveValue("desc");
 	});
-	test("updates order when clicked", async () => {
+
+	test("updates order when changed", () => {
 		render(<SortDate initialOrder="desc" />);
-
-		await act(async () => {
-			screen.getByText("Departure date ↑").click();
+		const select = screen.getByRole("combobox", {
+			name: /sort by departure date/i,
 		});
-
-		await waitFor(() => {
-			expect(screen.getByText("Departure date ↑")).toHaveClass(
-				"bg-schiphol-blue",
-			);
-		});
+		expect(select).toHaveValue("desc");
+		fireEvent.change(select, { target: { value: "asc" } });
+		expect(select).toHaveValue("asc");
 	});
 });
