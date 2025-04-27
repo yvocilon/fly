@@ -25,7 +25,9 @@ describe("FlightList", () => {
 	test("shows 'no flights found' when search is more than 3 characters and no flights are found", () => {
 		render(<FlightList isLoading={false} search="london" flights={[]} />);
 
-		expect(screen.getByText("No flights found for london")).toBeInTheDocument();
+		expect(
+			screen.getByText("No flights found for 'london'"),
+		).toBeInTheDocument();
 	});
 
 	test("show flight cards when flights are found", async () => {

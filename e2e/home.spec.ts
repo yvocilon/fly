@@ -18,7 +18,7 @@ test("should show no flights found when no flights are found", async ({
 		state: "detached",
 	});
 
-	const searchResults = page.getByText("No flights found for amsterdam");
+	const searchResults = page.getByText("No flights found for 'amsterdam'");
 
 	expect(searchResults).toBeVisible();
 });

@@ -22,12 +22,19 @@ export default function FlightList({ isLoading, flights, search }: Props) {
 
 	if (flights.length === 0) {
 		return (
-			<EmptyState text={`No flights found ${search ? `for ${search}` : ""}`} />
+			<EmptyState
+				text={`No flights found ${search ? `for '${search}'` : ""}`}
+			/>
 		);
 	}
 
 	return (
 		<div className="flex flex-col gap-4 my-6">
+			{search && (
+				<p className="text-gray-500 text-lg">
+					Showing {flights.length} flights for '{search}'
+				</p>
+			)}
 			{flights.map((flight) => (
 				<FlightCard key={flight.flightIdentifier} {...flight} />
 			))}
