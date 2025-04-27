@@ -9,7 +9,7 @@
 		"typecheck": "react-router typegen && tsc",
 		"lint": "biome check --write",
 		"format": "biome format --write",
-		"postinstall": "lefthook install"
+		"prepare": "lefthook install"
 	},
 	"dependencies": {
 		"@react-router/node": "^7.5.2",
