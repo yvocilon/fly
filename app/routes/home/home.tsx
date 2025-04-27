@@ -6,8 +6,14 @@ import SearchButton from "~/components/search/SearchButton";
 import SearchInput from "~/components/search/SearchInput";
 import SortDate from "~/components/sort-date/SortDate";
 import { getFlights } from "~/models/flights.server";
+import type { SortOption } from "~/types";
 import { abortableTimeout } from "~/utils";
 import type { Route } from "./+types/home";
+
+const sortOptions: SortOption[] = [
+	{ value: "asc", label: "Departure date ↑" },
+	{ value: "desc", label: "Departure date ↓" },
+];
 
 const schema = z.object({
 	search: z.string().optional(),
@@ -92,7 +98,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 			>
 				<SearchInput search={search} />
 
-				<SortDate initialOrder={order} />
+				<SortDate initialOrder={order} options={sortOptions} />
 
 				<SearchButton />
 			</Form>

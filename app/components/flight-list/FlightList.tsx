@@ -1,6 +1,7 @@
 import FlightCard from "~/components/flight-card/FlightCard";
 import SkeletonLoader from "~/components/skeleton-loader/SkeletonLoader";
 import type { Flight } from "~/types";
+import EmptyState from "../empy-state/EmptyState";
 
 type Props = {
 	isLoading: boolean;
@@ -15,17 +16,13 @@ export default function FlightList({ isLoading, flights, search }: Props) {
 
 	if ((search?.length || 0) < 3) {
 		return (
-			<p className="text-gray-500 text-sm mt-4">
-				Enter at least 3 characters to search for a destination
-			</p>
+			<EmptyState text="Enter at least 3 characters to search for a destination" />
 		);
 	}
 
 	if (flights.length === 0) {
 		return (
-			<p className="text-gray-500 text-sm mt-4">
-				No flights found {search && `for ${search}`}
-			</p>
+			<EmptyState text={`No flights found ${search ? `for ${search}` : ""}`} />
 		);
 	}
 

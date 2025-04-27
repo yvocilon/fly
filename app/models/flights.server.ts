@@ -28,7 +28,7 @@ const flightsSchema = z.object({
 	flights: z.array(flightSchema),
 });
 
-type FlightWithDateTime = z.infer<typeof flightSchema>;
+export type FlightWithDateTime = z.infer<typeof flightSchema>;
 
 export async function getFlights({ order, limit, search }: GetFlightsProps) {
 	try {

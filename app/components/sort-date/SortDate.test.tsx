@@ -1,10 +1,16 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
+import type { SortOption } from "~/types";
 import SortDate from "./SortDate";
+
+const sortOptions: SortOption[] = [
+	{ value: "asc", label: "Departure date ↑" },
+	{ value: "desc", label: "Departure date ↓" },
+];
 
 describe("SortDate", () => {
 	test("renders select and options", () => {
-		render(<SortDate />);
+		render(<SortDate options={sortOptions} />);
 		const select = screen.getByRole("combobox", {
 			name: /sort by departure date/i,
 		});
@@ -12,7 +18,7 @@ describe("SortDate", () => {
 	});
 
 	test("renders with initial order", () => {
-		render(<SortDate initialOrder="desc" />);
+		render(<SortDate options={sortOptions} initialOrder="desc" />);
 		const select = screen.getByRole("combobox", {
 			name: /sort by departure date/i,
 		});
@@ -20,7 +26,7 @@ describe("SortDate", () => {
 	});
 
 	test("updates order when changed", () => {
-		render(<SortDate initialOrder="desc" />);
+		render(<SortDate options={sortOptions} initialOrder="desc" />);
 		const select = screen.getByRole("combobox", {
 			name: /sort by departure date/i,
 		});

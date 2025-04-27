@@ -29,11 +29,18 @@ describe("FlightList", () => {
 	});
 
 	test("show flight cards when flights are found", async () => {
+		const flights = mockFlightsData.flights?.slice(0, 5);
+		const flightsWithDateTime = flights?.map((flight) => ({
+			...flight,
+			expectedDateTime: new Date(`${flight.date}T${flight.expectedTime}`),
+			originalDateTime: new Date(`${flight.date}T${flight.originalTime}`),
+		}));
+
 		render(
 			<FlightList
 				isLoading={false}
 				search="london"
-				flights={mockFlightsData.flights?.slice(0, 5)}
+				flights={flightsWithDateTime}
 			/>,
 		);
 
