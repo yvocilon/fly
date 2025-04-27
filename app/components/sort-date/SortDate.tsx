@@ -1,13 +1,12 @@
 import { useState } from "react";
+import type { SortOrder } from "~/types";
 
 type Props = {
-	initialOrder?: "asc" | "desc";
+	initialOrder?: SortOrder;
 };
 
 export default function SortDate({ initialOrder }: Props) {
-	const [sortOrder, setSortOrder] = useState<"asc" | "desc">(
-		initialOrder || "asc",
-	);
+	const [sortOrder, setSortOrder] = useState<SortOrder>(initialOrder || "asc");
 
 	return (
 		<div className="w-full md:w-auto flex items-center">

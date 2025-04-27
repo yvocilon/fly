@@ -2,14 +2,11 @@ import type { Flight } from "~/types";
 import FlightDate from "./FlightDate";
 
 export default function FlightCard({
-	flightIdentifier,
 	flightNumber,
 	airport,
 	date,
 	expectedTime,
 	originalTime,
-	url,
-	score,
 }: Flight) {
 	return (
 		<div

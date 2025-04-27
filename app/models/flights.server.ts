@@ -1,8 +1,8 @@
 import { z } from "zod";
-import type { Flight } from "~/types";
+import type { SortOrder } from "~/types";
 
 type GetFlightsProps = {
-	order: "asc" | "desc";
+	order: SortOrder;
 	limit: number;
 	search?: string;
 };
@@ -50,10 +50,7 @@ export async function getFlights({ order, limit, search }: GetFlightsProps) {
 	}
 }
 
-export function sortFlights(
-	flights: FlightWithDateTime[],
-	order: "asc" | "desc",
-) {
+export function sortFlights(flights: FlightWithDateTime[], order: SortOrder) {
 	return flights.sort((a, b) => {
 		const aTime = new Date(a.expectedDateTime).getTime();
 		const bTime = new Date(b.expectedDateTime).getTime();

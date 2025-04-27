@@ -12,3 +12,5 @@ export interface Flight {
 	url: string;
 	score: string;
 }
+
+export type SortOrder = "asc" | "desc";

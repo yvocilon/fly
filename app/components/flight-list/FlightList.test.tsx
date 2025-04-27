@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
-import mockFlightsData from "~/__mock__/flights.json";
+import mockFlightsData from "../../../test/__mock__/flights.json";
 import FlightList from "./FlightList";
 
 describe("FlightList", () => {
