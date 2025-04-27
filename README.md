@@ -14,12 +14,17 @@ cd schiphol-assignment
 npm install
 ```
 
-2. **Setup Git Hooks**
+2. **Setup Environment**
+```bash
+cp .env.sample .env
+```
+
+3. **Setup Git Hooks**
 ```bash
 npm run setup-hooks
 ```
 
-3. **Launch Development Server**
+4. **Launch Development Server**
 ```bash
 npm run dev
 ```

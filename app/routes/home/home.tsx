@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { Form, useNavigation, useSubmit } from "react-router";
 import { z } from "zod";
 import FlightList from "~/components/flight-list/FlightList";
@@ -64,14 +65,17 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 	const navigation = useNavigation();
 	const isLoading = navigation.state === "loading";
 
-	const onFormChange = (event: React.FormEvent<HTMLFormElement>) => {
-		const formData = new FormData(event.currentTarget);
+	const onFormChange = useCallback(
+		(event: React.FormEvent<HTMLFormElement>) => {
+			const formData = new FormData(event.currentTarget);
 
-		submit(formData, {
-			method: "get",
-			replace: true,
-		});
-	};
+			submit(formData, {
+				method: "get",
+				replace: true,
+			});
+		},
+		[submit],
+	);
 
 	return (
 		<div className="max-w-3xl mx-auto px-4 py-6">

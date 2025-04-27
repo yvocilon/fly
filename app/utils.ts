@@ -1,3 +1,5 @@
+import type { SortOrder } from "./types";
+
 export function abortableTimeout(ms: number, signal: AbortSignal) {
 	return new Promise((resolve, reject) => {
 		// If the signal is aborted by the time it reaches this, reject
@@ -20,4 +22,8 @@ export function abortableTimeout(ms: number, signal: AbortSignal) {
 			{ once: true },
 		);
 	});
+}
+
+export function isSortOrder(value: string): value is SortOrder {
+	return value === "asc" || value === "desc";
 }
