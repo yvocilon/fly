@@ -1,9 +1,9 @@
 import { Form, redirect, useNavigation, useSubmit } from "react-router";
-import type { Route } from "./+types/home";
 import { z } from "zod";
 import FlightCard from "~/components/flight-card/FlightCard";
 import { getFlights } from "~/models/flights.server";
 import { abortableTimeout } from "~/utils";
+import type { Route } from "./+types/home";
 
 const schema = z.object({
 	search: z.string().optional(),
