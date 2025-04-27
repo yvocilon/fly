@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, redirect, useNavigation, useSubmit } from "react-router";
 import { z } from "zod";
 import FlightCard from "~/components/flight-card/FlightCard";
@@ -59,10 +60,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 	const submit = useSubmit();
 	const navigation = useNavigation();
 	const isLoading = navigation.state === "loading";
+	const [sortOrder, setSortOrder] = useState<"asc" | "desc">(order);
 
 	const onFormChange = (event: React.FormEvent<HTMLFormElement>) => {
 		const formData = new FormData(event.currentTarget);
-		const search = formData.get("search");
 
 		submit(formData, {
 			method: "get",
@@ -80,10 +81,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 			</h1>
 			<Form
 				onChange={onFormChange}
-				className="flex items-center gap-2 border border-schiphol-blue rounded-md p-2 shadow-sm bg-white"
+				className="flex flex-col md:flex-row items-center gap-2 border border-schiphol-blue rounded-md p-2 shadow-sm bg-white"
 			>
 				<input
-					className="flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-schiphol-blue"
+					className="w-full md:flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-schiphol-blue"
 					type="text"
 					name="search"
 					placeholder="Search destination"
@@ -91,7 +92,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 					defaultValue={search || ""}
 				/>
 
-				<fieldset className="flex items-center border border-gray-300 rounded-md overflow-hidden">
+				<fieldset className="w-full md:w-auto flex items-center border border-gray-300 rounded-md overflow-hidden">
 					<legend className="sr-only">Sort by departure date</legend>
 					<div className="flex items-center">
 						<span className="text-xs text-gray-500 px-2 py-1 bg-gray-50 border-r border-gray-300">
@@ -102,8 +103,9 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 								type="submit"
 								name="order"
 								value="asc"
+								onClick={() => setSortOrder("asc")}
 								className={`px-3 py-2 text-sm font-medium ${
-									order === "asc"
+									sortOrder === "asc"
 										? "bg-schiphol-blue text-white"
 										: "bg-white text-gray-700 hover:bg-gray-50"
 								}`}
@@ -115,8 +117,9 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 								type="submit"
 								name="order"
 								value="desc"
+								onClick={() => setSortOrder("desc")}
 								className={`px-3 py-2 text-sm font-medium ${
-									order === "desc"
+									sortOrder === "desc"
 										? "bg-schiphol-blue text-white"
 										: "bg-white text-gray-700 hover:bg-gray-50"
 								}`}
@@ -130,7 +133,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
 				<button
 					type="submit"
-					className="bg-schiphol-blue text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-schiphol-blue/90 transition"
+					className="w-full md:w-auto bg-schiphol-blue text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-schiphol-blue/90 transition"
 				>
 					Search
 				</button>
