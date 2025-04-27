@@ -11,7 +11,7 @@ export default function FlightCard({
 	return (
 		<div
 			data-testid="flight-card"
-			className="border overflow-hidden border-schiphol-blue rounded-md p-4 flex flex-row items-stretch gap-6 bg-white shadow-sm h-[96px]"
+			className="border overflow-hidden hover:bg-afternoon-blue/10 border-schiphol-blue rounded-md p-4 flex flex-row items-stretch gap-6 bg-white shadow-sm h-[96px]"
 		>
 			<FlightDate
 				date={date}
