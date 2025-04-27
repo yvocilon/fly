@@ -13,8 +13,11 @@ export default function FlightDate({
 
 	return (
 		<div className="flex flex-col justify-center gap-1 min-h-[64px]">
-			<span className="text-xs text-gray-500">{date}</span>
+			<span data-testid="flight-date" className="text-xs text-gray-500">
+				{date}
+			</span>
 			<span
+				data-testid="flight-original-time"
 				className={
 					isSame
 						? "text-base font-medium text-schiphol-blue"
@@ -24,6 +27,7 @@ export default function FlightDate({
 				{originalTime}
 			</span>
 			<span
+				data-testid="flight-expected-time"
 				className={`text-base font-semibold text-dark-red ${isSame ? "invisible" : ""}`}
 			>
 				{expectedTime}
